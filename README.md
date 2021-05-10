@@ -5,5 +5,8 @@ All images used are from FrontEndMentor.
 Project uses React.js, Typescript, [React-Leaflet](https://react-leaflet.js.org/), [IP Geolocation API](https://geo.ipify.org/), [Public-IP](https://www.npmjs.com/package/public-ip)  
 CSS will be cleaned and re-uploaded in the next week.  
   
-To start this project, download the files and run `yarn start`.  
-Alternatively, you can travel to this link: [https://asbhaskar.com/ip-address-tracker/](https://asbhaskar.com/ip-address-tracker/)
+To start this project, clone the repository and run `yarn start`. I will provide an API key for ease of use as this is just a demo - please don't go overboard with requests.  
+  
+  
+Due to what appear to be CORS issues with github pages and geo.ipify.org, there will not be a live demo for this site.  
+The application will still work if you clone the repository.
