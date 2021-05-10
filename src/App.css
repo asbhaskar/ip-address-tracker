@@ -1,38 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+*{
+  margin:0px;
+  padding:0px;
+  font-family: 'Rubik', sans-serif;
+}
+
 .App {
   text-align: center;
+  height:100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-title{
+  color: #fff;
+  font-weight:700;
+  font-size:1.8rem;
+  padding-top:1.4em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.error{
+  color:red;
+  font-weight:700;
+  margin-top:0.5rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.heading-holder{
+  height:35vh;
+  background-image: url('./images/pattern-bg.png');
 }
 
-.App-link {
-  color: #61dafb;
+.info-absolute{
+  position: absolute;
+  top:25%;
+  width: 100vw;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.info-holder{
+  position:relative;
+  background-color:white;
+  border-radius:10px;
+  width:90vw;
+  min-height:20vh;
+  display:flex;
+  justify-content:center;
+  margin:auto;
+  z-index:10;
+}
+
+button{
+  font-size:18px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding:1.1rem;
+  border-width: 0px;
+  background:black;
+  color:white;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+input{
+  font-size:18px;
+  width: 30vw;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  padding:1.1rem;
+  border-width: 0px;
+}
+
+.input-holder{
+  margin-top:3vh;
+}
+
+.leaflet-map{
+  height:65vh;
+  background:wheat;
+}
+
+.leaflet-container{
+  height:100%;
+  z-index:1;
+}
+
+.leaflet-control-container{
+  z-index: 1000;
+}
+
+.spinner{
+  margin:auto;
+}
+
+@media(max-width:950px){
+  .info-holder{
+    flex-direction:column;
+    align-items:center;
+    width: 70vw;
+    min-height:0vh;
   }
 }
