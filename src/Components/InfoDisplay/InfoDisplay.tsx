@@ -8,9 +8,9 @@ export interface Props {
 
 const  InfoDisplay: React.FC<Props> = (props) => {
     return (
-        <div className="info-item-holder">
-            <div className="info-item-description">{props.infoDescription}</div>
-            <div className="info-item-text">{props.infoText}</div>
+        <div className="info__item">
+            <div className="info__description">{props.infoDescription}</div>
+            <div className="info__text">{props.infoText}</div>
         </div>
     )
 }

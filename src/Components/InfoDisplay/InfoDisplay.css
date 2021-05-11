@@ -1,5 +1,4 @@
-
-.info-item-holder{
+.info__item{
     background-color:white;
     width:18vw;
     text-align:left;
@@ -10,11 +9,11 @@
     border-right: solid 1px hsl(0, 0%, 85%);
 }
 
-.info-item-holder:last-child{
+.info__item:last-child{
     border-right:none;
 }
-
-.info-item-description{
+ 
+.info__description{
     color:hsl(0, 0%, 59%);
     margin-bottom:1rem;
     font-weight: 700;
@@ -22,14 +21,14 @@
     letter-spacing: 0.1rem;
 }
 
-.info-item-text{
+.info__text{
     font-size:1.6rem;
     color:black;
     font-weight:700;
 }
 
 @media(max-width:950px){
-    .info-item-holder{
+    .info__item{
         margin-top: 2vh;
         margin-bottom: 0px;
         margin-left: 0px;
@@ -39,16 +38,16 @@
         width:100%;
     }
 
-    .info-item-description{
+    .info__item:last-child{
+        margin-bottom: 2vh;
+    }
+
+    .info__description{
         margin-bottom:0.5rem;
         font-size:0.6rem;
     }
 
-    .info-item-text{
+    .info__text{
         font-size:1rem;
     }
-
-    .info-item-holder:last-child{
-        margin-bottom: 2vh;
-    }
-  }
+}

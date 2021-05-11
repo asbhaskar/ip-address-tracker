@@ -1,19 +1,21 @@
-import React, {useState, useEffect} from 'react';
-import './App.css';
-import InfoDisplay from './Components/InfoDisplay/InfoDisplay';
-import Map from './Components/Map/Map';
+import React, { useState, useEffect } from 'react';
 import { CircularProgress } from '@material-ui/core';
 import { LatLngExpression } from 'leaflet';
 import publicIp from 'public-ip';
+
+import InfoDisplay from './Components/InfoDisplay/InfoDisplay';
+import Map from './Components/Map/Map';
+
 import submitArrow from './images/icon-arrow.svg';
+import './App.css';
 
 const App = () => {
-    const [isLoading, setIsLoading] = useState < Boolean > (true)
-    const [location, setLocation] = useState('')
+	const [coords, setCoords] = useState < LatLngExpression > ([0,0])
     const [infoData, setInfoData] = useState < String[] > ([])
-    const infoDescriptions = ["IP ADDRESS", "LOCATION", "TIMEZONE", "ISP"]
-    const [coords, setCoords] = useState < LatLngExpression > ([0,0])
+	const [isLoading, setIsLoading] = useState < Boolean > (true)
+	const [location, setLocation] = useState('')
 	const [errorMessage, setErrorMessage] = useState('') 
+	const infoDescriptions = ["IP ADDRESS", "LOCATION", "TIMEZONE", "ISP"]
 
 	useEffect(() => {
 		const getIP = async () => {
@@ -51,42 +53,46 @@ const App = () => {
 			.then(res => res.json())
 			.then(data => {
 				if(data.isp === '') setErrorMessage('Not a valid IP / Domain, please try again.')
-				console.log(data)
 				setCoords([data.location.lat, data.location.lng])
-				setInfoData([data.ip, `${data.location.city}, ${data.location.region}
-				${data.location.postalCode}`, `UTC ${data.location.timezone}`, data.isp])
-			}).then(() => setIsLoading(false))
+				setInfoData([
+					data.ip, 
+					`${data.location.city}, ${data.location.region} ${data.location.postalCode}`, 
+					`UTC ${data.location.timezone}`, 
+					data.isp
+				])
+			})
+			.then(() => setIsLoading(false))
 			.catch((err) => setErrorMessage('There was an error contacting the API, please check your input or contact the site admin'))
 	}
 
     return (
         <div className="App">
-            <div className="heading-holder">
-                <p className="app-title">IP Address Tracker</p>
-				<div className="input-holder">
+            <div className="heading">
+                <p className="heading__title">IP Address Tracker</p>
+				<div className="heading__input-container">
 					<input 
+						className="heading__input"
 						placeholder={'Search for any IP address or domain'}
 						onChange={onChange} />
 					<button
+						className="heading__button"
 						type='submit'
-						onClick={onButtonClick}> <img src={submitArrow} alt="submit" /></button>
+						onClick={onButtonClick}> 
+						<img src={submitArrow} alt="Submit Arrow" /></button>
 				</div>
-				<p className="error">{errorMessage}</p>
+				<p className="heading__error">{errorMessage}</p>
             </div>
-            <div className="info-absolute">
-                <div className="info-holder">
-				 	{isLoading && <div className="spinner"><CircularProgress/></div>}
-                    {!isLoading && infoData.map((item, index) => (
-						<InfoDisplay
-							key={index}
-							infoDescription={infoDescriptions[index]}
-							infoText={item}/>))}
-                </div>
+            <div className="info">
+				{isLoading && <div className="info__spinner"><CircularProgress /></div>}
+				{!isLoading && infoData.map((item, index) => (
+					<InfoDisplay
+						key={index}
+						infoDescription={infoDescriptions[index]}
+						infoText={item} />
+				))}
             </div>
             <div className="leaflet-map">
-                <Map 
-					coords= {coords}
-				/>
+                <Map coords= {coords} />
             </div>
         </div>
     );

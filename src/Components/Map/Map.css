@@ -1,0 +1,13 @@
+.leaflet-map {
+    height: 65vh;
+    background: wheat;
+}
+
+.leaflet-container {
+    height: 100%;
+    z-index: 1;
+}
+
+.leaflet-control-container {
+    z-index: 1000;
+}
